@@ -1,9 +1,9 @@
 # NeuroTumorNet
 
 A deep learning model for brain tumor classification using MRI images.
-![NeuroTumorNet Logo]()
+![NeuroTumorNet Logo](https://github.com/haybnzz/NeuroTumorNet/blob/main/images/NeuroTumorNet.png?raw=true)
 
-[![TensorFlow - NeuroTumorNet](https://img.shields.io/static/v1?label=TensorFlow&message=NeuroTumorNet&style=for-the-badge&logo=tensorflow&logoSize=auto&labelColor=4B4453&color=FF6F61)](https://github.com/haybnzz/NeuroTumorNet)  [![CC BY-NC 4.0 License](https://img.shields.io/static/v1?label=License&message=CC%20BY-NC%204.0&style=for-the-badge&logo=creative-commons&logoSize=auto&labelColor=4B4453&color=FFD166)](https://github.com/haybnzz/NeuroTumorNet/blob/main/LICENSE)  [![Model Download](https://img.shields.io/static/v1?label=Model&message=Download&style=for-the-badge&logo=huggingface&logoSize=auto&labelColor=4B4453&color=06D6A0)](https://huggingface.co/haydenbanz/NeuroTumorNet/resolve/main/brain_tumor_model.h5?download=true)  [![Live Demo](https://img.shields.io/static/v1?label=Live&message=Demo&style=for-the-badge&logo=streamlit&logoSize=auto&labelColor=4B4453&color=118AB2)](https://huggingface.co/spaces/haydenbanz/NeuroTumorNets)  [![Datasets](https://img.shields.io/static/v1?label=Datasets&message=TumorVision&style=for-the-badge&logo=data:image/png;base64,...&logoSize=auto&labelColor=4B4453&color=EF476F)](https://huggingface.co/datasets/haydenbanz/TumorVisionDatasets/tree/main)  [![GitHub Issues](https://img.shields.io/github/issues/haybnzz/NeuroTumorNet?style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=073B4C)](https://github.com/haybnzz/NeuroTumorNet/issues)  [![GitHub Stars](https://img.shields.io/github/stars/haybnzz/NeuroTumorNet?style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=EF476F)](https://github.com/haybnzz/NeuroTumorNet/stargazers) ![Profile Views](https://komarev.com/ghpvc/?username=haybnzz&style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=FFD166)  [![Website](https://img.shields.io/static/v1?label=Website&message=Hay.Bnz&style=for-the-badge&logo=data:image/png;base64,...&logoSize=auto&labelColor=4B4453&color=EF233C)](https://haybnz.glitch.me/)
+[![TensorFlow - NeuroTumorNet](https://img.shields.io/static/v1?label=TensorFlow&message=NeuroTumorNet&style=for-the-badge&logo=tensorflow&logoSize=auto&labelColor=4B4453&color=FF6F61)](https://github.com/haybnzz/NeuroTumorNet)  [![CC BY-NC 4.0 License](https://img.shields.io/static/v1?label=License&message=CC%20BY-NC%204.0&style=for-the-badge&logo=creative-commons&logoSize=auto&labelColor=4B4453&color=FFD166)](https://github.com/haybnzz/NeuroTumorNet/blob/main/LICENSE)  [![Model Download](https://img.shields.io/static/v1?label=Model&message=Download&style=for-the-badge&logo=huggingface&logoSize=auto&labelColor=4B4453&color=06D6A0)](https://huggingface.co/haydenbanz/NeuroTumorNet/resolve/main/brain_tumor_model.h5?download=true)  [![Live Demo](https://img.shields.io/static/v1?label=Live&message=Demo&style=for-the-badge&logo=streamlit&logoSize=auto&labelColor=4B4453&color=118AB2)](https://huggingface.co/spaces/haydenbanz/NeuroTumorNets)  [![Datasets](https://img.shields.io/static/v1?label=Datasets&message=TumorVision&style=for-the-badge&logo=data:image/png;base64,...&logoSize=auto&labelColor=4B4453&color=EF476F)](https://huggingface.co/datasets/haydenbanz/TumorVisionDatasets/tree/main)  [![GitHub Issues](https://img.shields.io/github/issues/haybnzz/NeuroTumorNet?style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=073B4C)](https://github.com/haybnzz/NeuroTumorNet/issues)  [![GitHub Stars](https://img.shields.io/github/stars/haybnzz/NeuroTumorNet?style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=EF476F)](https://github.com/haybnzz/NeuroTumorNet/stargazers) ![Profile Views](https://komarev.com/ghpvc/?username=haybnzz&style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=FFD166)  [![Website](https://img.shields.io/static/v1?label=Website&message=Hay.Bnz&style=for-the-badge&logo=data:image/png;base64,...&logoSize=auto&labelColor=4B4453&color=EF233C)](https://haybnz.glitch.me/)  [![Model Download - Kaggle](https://img.shields.io/static/v1?label=Kaggle&message=Download&style=for-the-badge&logo=kaggle&logoSize=auto&labelColor=4B4453&color=20BEFF)](https://www.kaggle.com/models/haydenbanz/neurotumornet)  [![Paper](https://img.shields.io/static/v1?label=Paper&message=GitHub&style=for-the-badge&logo=github&logoSize=auto&labelColor=4B4453&color=FFD700)](blob:https://github.com/eaddddc7-df41-49f0-9658-15a716ec46de)
 
 ## Description
 
@@ -66,9 +66,12 @@ pip install -r requirements.txt
      ```bash
      python data_to_model.py
      ```
+ - Option 3: Download directly from Kaggle:
 
 ### Dataset (Optional)
-
+   ```bash
+     Donload from above Badge section 
+     ```
 If you want to train the model yourself or test it with the original dataset, you can download the brain tumor MRI dataset from the provided data link in the repository.
 
 ## Usage
@@ -137,6 +140,15 @@ dataset/
     └── pituitary_tumor/
 ```
 
+# Image Display
+
+Here are the images from the repository:
+
+1. ![Preview Image 1](https://github.com/haybnzz/NeuroTumorNet/raw/refs/heads/main/images/preview_1.webp)
+2. ![Preview Image](https://github.com/haybnzz/NeuroTumorNet/raw/refs/heads/main/images/preview.webp)
+3. ![Accuracy Image](https://github.com/haybnzz/NeuroTumorNet/raw/refs/heads/main/images/accuracy.webp)
+
+
 ## 📜 License
 
 This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License. See the [LICENSE](LICENSE) file for more details.
@@ -166,8 +178,18 @@ If you use NeuroTumorNet in your research, please cite:
   url = {https://github.com/haybnzz/NeuroTumorNet},
   year = {2025},
 }
-``
+```
 
+```
+@misc {hay.bnz_2025,
+	author       = { {Hay.Bnz} },
+	title        = { NeuroTumorNet (Revision 7f9585f) },
+	year         = 2025,
+	url          = { https://huggingface.co/haydenbanz/NeuroTumorNet },
+	doi          = { 10.57967/hf/4899 },
+	publisher    = { Hugging Face }
+}
+```
 ## Acknowledgments
 
 - Thanks to all contributors to the brain tumor MRI datasets used in training this model
