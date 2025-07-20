@@ -2,8 +2,11 @@ import os
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Flatten, Dropout
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 import matplotlib.pyplot as plt
 
 # Define paths
@@ -12,12 +15,12 @@ train_dir = os.path.join(base_dir, 'training')
 test_dir = os.path.join(base_dir, 'testing')
 
 # Image parameters
-img_height, img_width = 224, 224  # Resize images to this size
+img_height, img_width = 224, 224
 batch_size = 32
 
 # Data augmentation and preprocessing for training
 train_datagen = ImageDataGenerator(
-    rescale=1./255,  # Normalize pixel values to [0, 1]
+    rescale=1./255,
     rotation_range=20,
     width_shift_range=0.2,
     height_shift_range=0.2,
@@ -35,7 +38,7 @@ train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size=(img_height, img_width),
     batch_size=batch_size,
-    class_mode='categorical'  # Multi-class classification
+    class_mode='categorical'
 )
 
 # Load and prepare testing data
@@ -44,26 +47,28 @@ test_generator = test_datagen.flow_from_directory(
     target_size=(img_height, img_width),
     batch_size=batch_size,
     class_mode='categorical',
-    shuffle=False  # Keep order for evaluation
+    shuffle=False
 )
 
-# Define the CNN model
-model = Sequential([
-    Conv2D(32, (3, 3), activation='relu', input_shape=(img_height, img_width, 3)),
-    MaxPooling2D(pool_size=(2, 2)),
-    Conv2D(64, (3, 3), activation='relu'),
-    MaxPooling2D(pool_size=(2, 2)),
-    Conv2D(128, (3, 3), activation='relu'),
-    MaxPooling2D(pool_size=(2, 2)),
-    Flatten(),
-    Dense(128, activation='relu'),
-    Dropout(0.5),  # Prevent overfitting
-    Dense(4, activation='softmax')  # 4 classes: glioma, meningioma, no_tumor, pituitary
-])
+# Load the VGG16 model with pre-trained weights
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(img_height, img_width, 3))
+
+# Freeze the convolutional layers
+for layer in base_model.layers:
+    layer.trainable = False
+
+# Add custom layers for classification
+x = Flatten()(base_model.output)
+x = Dense(512, activation='relu')(x)
+x = Dropout(0.5)(x)
+predictions = Dense(4, activation='softmax')(x)
+
+# Create the final model
+model = Model(inputs=base_model.input, outputs=predictions)
 
 # Compile the model
 model.compile(
-    optimizer='adam',
+    optimizer=Adam(lr=1e-4),
     loss='categorical_crossentropy',
     metrics=['accuracy']
 )
@@ -71,22 +76,24 @@ model.compile(
 # Print model summary
 model.summary()
 
+# Callbacks
+checkpoint = ModelCheckpoint('brain_tumor_model.h5', monitor='val_accuracy', save_best_only=True, mode='max')
+reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=5, min_lr=1e-6, mode='min')
+
 # Train the model
-epochs = 20  # Adjust based on your needs
+epochs = 20
 history = model.fit(
     train_generator,
     steps_per_epoch=train_generator.samples // batch_size,
     epochs=epochs,
     validation_data=test_generator,
-    validation_steps=test_generator.samples // batch_size
+    validation_steps=test_generator.samples // batch_size,
+    callbacks=[checkpoint, reduce_lr]
 )
 
 # Evaluate the model
 test_loss, test_acc = model.evaluate(test_generator)
 print(f"Test accuracy: {test_acc:.4f}")
-
-# Save the model
-model.save('brain_tumor_model.h5')
 
 # Plot training results
 acc = history.history['accuracy']

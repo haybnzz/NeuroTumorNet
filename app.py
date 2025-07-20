@@ -3,6 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
+from tensorflow.keras.applications.vgg16 import preprocess_input
 
 # Load the trained model
 model = load_model('brain_tumor_model.h5')  # Adjust path if needed
@@ -14,10 +15,12 @@ class_labels = ['Glioma Tumor', 'Meningioma Tumor', 'No Tumor', 'Pituitary Tumor
 def predict_tumor(img):
     # Resize to match model input (224x224)
     img = img.resize((224, 224))
-    # Convert to array and normalize
-    img_array = image.img_to_array(img) / 255.0
+    # Convert to array
+    img_array = image.img_to_array(img)
     # Add batch dimension
     img_array = np.expand_dims(img_array, axis=0)
+    # Preprocess the image for VGG16
+    img_array = preprocess_input(img_array)
     # Make prediction
     prediction = model.predict(img_array)
     # Get the predicted class and confidence
