@@ -1,7 +1,7 @@
 # Creative Commons Attribution-NonCommercial 4.0 International License
 
 **NeuroTumorNet**  
-Copyright © 2025 Hay.Bnz (https://github.com/haybnzz)
+Copyright © 2025  Hay.Bnz (https://github.com/haybnzz)
 
 This work is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/). To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc/4.0/](http://creativecommons.org/licenses/by-nc/4.0/) or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
